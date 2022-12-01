@@ -43,6 +43,13 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Boot Animation
 $(call inherit-product, vendor/aospa/bootanimation/bootanimation.mk)
 
+# Call Recording
+TARGET_CALL_RECORDING_SUPPORTED ?= true
+ifneq ($(TARGET_CALL_RECORDING_SUPPORTED),false)
+PRODUCT_COPY_FILES += \
+    vendor/aospa/target/config/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/com.google.android.apps.dialer.call_recording_audio.features.xml
+endif
+
 # Camera
 PRODUCT_PACKAGES += \
     GoogleCameraGo
